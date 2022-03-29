@@ -23,12 +23,15 @@ Boot the Ubuntu ISO in virtualbox and follow the setup instructions
 
 Do not try to download any extra packages because the apt repository will not work
 
-Once initial instalation complete the first thing you will need to do is repair the apt sources list.
+Once initial installation complete the first thing you will need to do is repair the apt sources list.
+
+----Repair APT----
 
 A copy of the updated sources.list file can be found here, but if you want to do it manually you will need to replace all the archive.ubuntu.com links with old-releases.ubuntu.com. 
 
 Once that is fixed you should be able to run "apt-get update" or "aptitude update"
 
+---Install Required Tools---
 
 
 
