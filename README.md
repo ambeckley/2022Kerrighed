@@ -43,13 +43,11 @@ Once that is fixed you should be able to run "apt-get update" or "aptitude updat
 
 ---Install Required Tools---
 
-# aptitude install dhcp3-server
+ aptitude install dhcp3-server tftpd-hpa syslinux nfs-kernel-server nfs-common debootstrap
+ 
+--Configure Services---
 
-# aptitude install tftpd-hpa
 
-# aptitude install syslinux
-
-# apt-get install nfs-kernel-server nfs-common
 
 
 
