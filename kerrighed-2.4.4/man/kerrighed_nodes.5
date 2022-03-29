@@ -1,0 +1,86 @@
+'\" t
+.\"     Title: kerrighed_nodes
+.\"    Author: [see the "Author" section]
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 01/29/2010
+.\"    Manual: [FIXME: manual]
+.\"    Source: [FIXME: source]
+.\"  Language: English
+.\"
+.TH "KERRIGHED_NODES" "5" "01/29/2010" "[FIXME: source]" "[FIXME: manual]"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+kerrighed_nodes_ \- File hosting nodes list and session number of a Kerrighed cluster\&.
+.SH "DESCRIPTION"
+.PP
+The
+kerrighed_nodes
+file contains the list of nodes belonging to the Kerrighed cluster\&. Each node name is on a separate line and is followed by the logical node number and the name of the network device to use for Kerrighed communications\&.
+.PP
+The
+\fIsession\fR
+field contains identifier of the cluster\&. When several Kerrighed clusters have to share the same Ethernet switch, each cluster should define a different session identifier to avoid collisions\&. A session identifier is a simple integer\&.
+.PP
+The
+\fInbmin\fR
+field is used to define the number of nodes to be automatically started when a Kerrighed cluster is booting\&. This field is optional\&. When this field is set, the use of the
+\fBkrgadm\fR
+is not needed any more\&. During the boot phase of cluster nodes when the kerrighed module is loaded, Kerrighed waits for "nbmin" nodes to be up\&. Then the required number of nodes are up, Kerrighed is automatically started\&.
+.PP
+.PP
+\fBExample\ \&1.\ \&kerrighed_nodes\fR
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+        session=1
+        nbmin=4
+        node1:0:eth0
+        node2:1:eth0
+        node3:2:eth0
+        node4:3:eth0
+      
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+The default location for the
+kerrighed_nodes
+file is the
+/etc/kerrighed/
+directory\&.
+.SH "FILES"
+.PP
+.PP
+/etc/kerrighed_nodes
+.RS 4
+.RE
+.SH "AUTHOR"
+.PP
+Renaud Lottiaux
+renaud\&.lottiaux@kerlabs\&.com
+.SH "SEE ALSO"
+.PP
+
+\m[blue]\fB\fBkerrighed_session\fR (5)\fR\m[],
+\m[blue]\fB\fBkrgadm\fR (1)\fR\m[]

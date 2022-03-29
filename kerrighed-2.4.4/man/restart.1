@@ -1,0 +1,107 @@
+'\" t
+.\"     Title: restart
+.\"    Author: [see the "Authors" section]
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 01/29/2010
+.\"    Manual: [FIXME: manual]
+.\"    Source: [FIXME: source]
+.\"  Language: English
+.\"
+.TH "RESTART" "1" "01/29/2010" "[FIXME: source]" "[FIXME: manual]"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+restart \- Restart an application\&.
+.SH "SYNOPSIS"
+.HP \w'\fBrestart\fR\ 'u
+\fBrestart\fR [\fIOPTIONS\fR] \fIappid\fR \fIversion\fR
+.SH "DESCRIPTION"
+.PP
+
+\fBrestart\fR
+restarts the application given by
+\fIappid\fR
+from the
+\fBn\fRth checkpoint (with
+\fBn\fR
+equals to
+\fIversion\fR)\&.
+.PP
+See
+\fBcheckpoint\fR(1) for further details\&.
+.SH "OPTIONS"
+.PP
+.PP
+\fB\-h\fR, \fB\-\-help\fR
+.RS 4
+Print help and exit\&.
+.RE
+.PP
+\fB\-q\fR, \fB\-\-quiet\fR
+.RS 4
+Quiet; do not write anything to standard output\&.
+.RE
+.PP
+\fB\-t\fR, \fB\-\-replace\-tty\fR
+.RS 4
+Replace application original terminal by the current one\&. This option can be used only if stdin, stdout and stderr are associated to the same terminal (no redirections)\&.
+.RE
+.PP
+\fB\-f\fR, \fB\-\-foreground\fR
+.RS 4
+By default, the application is restarted in a new session in background and the
+\fBrestart\fR
+command exits as soon as the application is restarted\&.
+.sp
+This option makes the
+\fBrestart\fR
+command be parent of the restarted application and wait for the end of the application\&. The terminal can then be used to input data to the the application (useful for command\-line interactive application)\&. It implies option \-t\&.
+.RE
+.SH "FILES"
+.PP
+.PP
+/var/chkpt
+.RS 4
+This directory is default location for disk checkpoints\&.
+.RE
+.PP
+/var/chkpt/<appid>/v<version>/
+.RS 4
+This directory contains the
+\fIn\fRth checkpoint (with
+\fIn\fR
+equals to
+\fIversion\fR) of application identified by
+\fIappid\fR\&.
+.sp
+To remove a checkpoint from disk, remove this folder\&.
+.RE
+.SH "AUTHORS"
+.PP
+Matthieu Fertré
+matthieu\&.fertre@kerlabs\&.com, Renaud Lottiaux
+renaud\&.lottiaux@kerlabs\&.com
+.SH "SEE ALSO"
+.PP
+
+\m[blue]\fB\fBcheckpoint\fR(1)\fR\m[],
+\m[blue]\fB\fBkrgcr\-run\fR(1)\fR\m[],
+\m[blue]\fB\fBkrgcapset\fR(1)\fR\m[],
+\m[blue]\fB\fBkerrighed_capabilities\fR(7)\fR\m[],

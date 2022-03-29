@@ -1,0 +1,190 @@
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+					"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<refentry id='krgcapset.1'>
+  <refmeta>
+    <refentrytitle>krgadm</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>krgadm</refname>
+    <refpurpose>Start, stop or get status of a Kerrighed cluster</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>krgadm</command>
+      <group choice="opt" >
+				<arg choice="plain">-h</arg>
+				<arg choice="plain">--help</arg>
+      </group>
+    </cmdsynopsis>
+    <cmdsynopsis>
+      <command>krgadm</command>
+      <arg choice="plain" >cluster</arg>
+      <group choice="req" >
+				<arg choice="plain">status</arg>
+				<arg choice="plain">wait_start</arg>
+				<arg choice="plain">poweroff</arg>
+				<arg choice="plain">reboot</arg>
+      </group>
+    </cmdsynopsis>
+    <cmdsynopsis>
+      <command>krgadm</command>
+      <arg choice="plain" >cluster</arg>
+      <group choice="req" >
+				<arg choice="plain">start</arg>
+      </group>
+      <group choice="opt" >
+				<arg choice="plain" >-n</arg>
+				<arg choice="plain" >--nodes</arg>
+      </group>
+      <group choice="opt">
+				<arg choice="plain" >-a</arg>
+				<arg choice="plain" >--auto</arg>
+      </group>
+    </cmdsynopsis>
+    <cmdsynopsis>
+      <command>krgadm</command>
+      <arg choice="plain">nodes</arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+      <command>krgadm</command> allows the user to start, stop or get
+      status of a Kerrighed cluster..
+    </para>
+    
+    <para>
+      Each <command>krgadm</command> invocation is followed by a command and some options
+      relative to this mode.
+      <variablelist>
+				<varlistentry>
+					<term>cluster</term>
+					<listitem>
+						<para>Start, stop or see the cluster status.</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>nodes</term>
+					<listitem>
+						<para>Get cluster nodes status.</para>
+					</listitem>
+				</varlistentry>
+      </variablelist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>General Options</title>
+    <para>
+      <variablelist>
+				<varlistentry>
+					<term>-h</term>
+					<term>--help</term>
+					<listitem>
+						<para>Print help and exit</para>
+					</listitem>
+				</varlistentry>
+      </variablelist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Modes</title>
+    <para>
+      <variablelist>
+				<varlistentry>
+					<term>cluster</term>
+					<listitem>
+						<para>Manage the cluster</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>nodes</term>
+					<listitem>
+						<para>Prints cluster nodes status</para>
+					</listitem>
+				</varlistentry>
+      </variablelist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Cluster commands</title>
+    <para>
+      <variablelist>
+				<varlistentry>
+					<term>start</term>
+					<listitem>
+						<para>Start the cluster (see CLUSTER START OPTIONS below)</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>status</term>
+					<listitem>
+						<para>Print cluster status</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>wait_start</term>
+					<listitem>
+						<para>Return once cluster is started</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>poweroff</term>
+					<listitem>
+						<para>Power off all nodes belonging to the cluster</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>reboot</term>
+					<listitem>
+						<para>Reboot all nodes belonging to the cluster</para>
+					</listitem>
+				</varlistentry>
+      </variablelist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Cluster start options</title>
+		<para>
+			By default, <command>krgadm cluster start</command> start the
+			cluster with available nodes.
+		</para>
+    <para>
+      <variablelist>
+				<varlistentry>
+					<term>-n</term>
+					<term>--nodes</term>
+					<listitem>
+						<para>Wait for a given list of nodes before starting. List
+						of nodes is of the form: 1,3,7,10-12,43-46</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>-n</term>
+					<term>--nodes</term>
+					<listitem>
+						<para>Wait for the given number of nodes to be present
+						before starting.</para>
+					</listitem>
+				</varlistentry>
+      </variablelist>
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Author</title>
+    <para>
+      Renaud Lottiaux <email>renaud.lottiaux@kerlabs.com</email>
+    </para>
+    <para>
+      Jean Parpaillon <email>jean.parpaillon@kerlabs.com</email>
+    </para>
+  </refsect1>
+</refentry>

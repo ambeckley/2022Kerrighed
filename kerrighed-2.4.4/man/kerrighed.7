@@ -1,0 +1,87 @@
+'\" t
+.\"     Title: kerrighed
+.\"    Author: [see the "Authors" section]
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 01/29/2010
+.\"    Manual: [FIXME: manual]
+.\"    Source: [FIXME: source]
+.\"  Language: English
+.\"
+.TH "KERRIGHED" "7" "01/29/2010" "[FIXME: source]" "[FIXME: manual]"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+kerrighed \- a Linux based Single System Image\&.
+.SH "SYNOPSIS"
+.HP \w'\fBKerrighed\fR\ 'u
+\fBKerrighed\fR
+.SH "DESCRIPTION"
+.PP
+Kerrighed is a Single System Image operating system for clusters\&. Kerrighed offers the view of a unique SMP machine on top of a cluster of standard PCs\&. Kerrighed main features are :
+.PP
+Configurable Global Process Scheduler:
+.RS 4
+Processes and threads are automatically scheduled over the cluster nodes to balance the CPU load using the Kerrighed default scheduling algorithm\&. However, Kerrighed offers a toolkit to easily write personal schedulers hot\-loadable through kernel modules\&.
+.RE
+.PP
+Distributed Shared Memory:
+.RS 4
+Threads and System V memory segments can operate through the whole cluster, just like on a SMP machine\&.
+.RE
+.PP
+High Performance Stream Migration Mechanism:
+.RS 4
+Processes using streams (socket, pipe, fifo, char device, etc) can be migrated with no penalty on communications performance\&.
+.RE
+.PP
+Distributed File System:
+.RS 4
+A unique file name space is seen over the whole cluster\&. All nodes disk are merged in an unique global virtual disk\&.
+.RE
+.PP
+Process Check\-pointing:
+.RS 4
+Processes can be check\-pointed and restarted on any cluster node\&.
+.RE
+.PP
+Full System V Interface:
+.RS 4
+Full Posix Thread Interface\&.
+.RE
+.PP
+Kerrighed is implemented as an extension to Linux operating system (a set of Linux modules and a small patch to the kernel)\&. Kerrighed is independent of the cluster interconnection network\&.
+.SH "FILES"
+.PP
+.PP
+/etc/kerrighed_nodes
+.RS 4
+This file contains the list of nodes used in the Kerrighed cluster\&.
+.RE
+.SH "AUTHORS"
+.PP
+Renaud Lottiaux
+renaud\&.lottiaux@kerlabs\&.com
+.SH "SEE ALSO"
+.PP
+
+\m[blue]\fB\fBkerrighed_capabilities\fR (7)\fR\m[],
+\m[blue]\fB\fBmigrate\fR (1)\fR\m[],
+\m[blue]\fB\fBkrgcapset\fR (1)\fR\m[],
+\m[blue]\fB\fBcheckpoint\fR (1)\fR\m[]

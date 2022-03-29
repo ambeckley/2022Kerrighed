@@ -1,0 +1,69 @@
+'\" t
+.\"     Title: krgcr-run
+.\"    Author: [see the "Author" section]
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 01/29/2010
+.\"    Manual: [FIXME: manual]
+.\"    Source: [FIXME: source]
+.\"  Language: English
+.\"
+.TH "KRGCR\-RUN" "1" "01/29/2010" "[FIXME: source]" "[FIXME: manual]"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+krgcr-run \- Run a program with CHECKPOINTABLE capability\&.
+.SH "SYNOPSIS"
+.HP \w'\fBkrgrun\-cr\fR\ 'u
+\fBkrgrun\-cr\fR [\fIOPTIONS\fR] \fIprogram\fR [\fIarg\fR\ \fI\&.\&.\&.\fR]
+.SH "DESCRIPTION"
+.PP
+
+\fBkrgcr\-run\fR
+runs a program in a new session and gives the CHECKPOINTABLE capability (See
+\fBkerrighed_capabilities\fR(7)) to the program\&. If the program respects current limitations described in
+\fBcheckpoint\fR(1) manual, it can be safely checkpointed\&.
+.SH "OPTIONS"
+.PP
+.PP
+\fB\-h\fR, \fB\-\-help\fR
+.RS 4
+Print help and exit\&.
+.RE
+.PP
+\fB\-b\fR, \fB\-\-background\fR
+.RS 4
+Run the application in background\&. Default: run the application in foreground\&.
+.RE
+.PP
+\fB\-o\fR \fIfile\fR, \fB\-\-output\fR=\fIfile\fR
+.RS 4
+Output application identifier in file\&. This is useful to script the checkpoint\&.
+.RE
+.SH "AUTHOR"
+.PP
+Matthieu Fertré
+matthieu\&.fertre@kerlabs\&.com
+.SH "SEE ALSO"
+.PP
+
+\fBcheckpoint\fR(1),
+\m[blue]\fB\fBrestart\fR(1)\fR\m[],
+\m[blue]\fB\fBkrgcapset\fR(1)\fR\m[],
+\m[blue]\fB\fBkerrighed_capabilities\fR(7)\fR\m[]

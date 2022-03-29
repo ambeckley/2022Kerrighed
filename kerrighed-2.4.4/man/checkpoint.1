@@ -1,0 +1,160 @@
+'\" t
+.\"     Title: checkpoint
+.\"    Author: [see the "Authors" section]
+.\" Generator: DocBook XSL Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 01/29/2010
+.\"    Manual: [FIXME: manual]
+.\"    Source: [FIXME: source]
+.\"  Language: English
+.\"
+.TH "CHECKPOINT" "1" "01/29/2010" "[FIXME: source]" "[FIXME: manual]"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+checkpoint \- Checkpoint an application\&.
+.SH "SYNOPSIS"
+.HP \w'\fBcheckpoint\fR\ 'u
+\fBcheckpoint\fR [\fIOPTIONS\fR] \fIpid\fR
+.SH "DESCRIPTION"
+.PP
+
+\fBcheckpoint\fR
+checkpoints a running application identified by one of its processes given by
+\fIpid\fR\&.
+.PP
+Checkpointing an application consists in three steps: freezing the application, saving the application state on disk, unfreezing the application\&. By default, all three steps are run in sequence\&.
+.PP
+To allow an application to be checkpointed, one must set the CHECKPOINTABLE capability\&. See
+\fBkrgcr\-run\fR(1),
+\fBkrgcapset\fR(1)) and
+\fBkerrighed_capabilities\fR(7) for further details\&.
+.PP
+In general case, an application consists of a tree of processes or threads\&. The root process of the application must have the CHECKPOINTABLE capability effective and inheritable before creating other processes or threads (See
+\fBfork\fR(2),
+\fBclone\fR(2), and
+\fBpthread_create\fR(3))\&.
+.PP
+If the root application process exits later, all its children processes are still considered as processes of the same application\&.
+.SH "OPTIONS"
+.PP
+.PP
+\fB\-h\fR, \fB\-\-help\fR
+.RS 4
+Print help and exit\&.
+.RE
+.PP
+\fB\-a\fR, \fB\-\-from\-appid\fR
+.RS 4
+Use
+\fIpid\fR
+as an application identifier, not as a standard process identifier\&.
+.RE
+.PP
+\fB\-f\fR, \fB\-\-freeze\fR
+.RS 4
+Freeze an application without checkpointing it\&. It is useful if you have to save some objects (such as files) before running the checkpoint without racing with the application\&.
+.RE
+.PP
+\fB\-u\fR [\fIsignal\fR], \fB\-\-unfreeze\fR=[\fIsignal\fR]
+.RS 4
+Unfreeze an application previously frozen without checkpointing it\&. Optionally, it sends a signal
+\fIsignal\fR
+to all processes of the application just before unfreezing it\&. The signal will be handled by each process as soon as the process is woken up\&. By default, no signal is sent\&.
+\fIsignal\fR
+must be given as a numerical value\&. The list of signal numbers can be retrieved with
+\fBkill \-L\fR\&.
+.RE
+.PP
+\fB\-c\fR, \fB\-\-ckpt\-only\fR
+.RS 4
+Checkpoint an already frozen application\&.
+.RE
+.PP
+\fB\-k\fR [\fIsignal\fR], \fB\-\-kill\fR=[\fIsignal\fR]
+.RS 4
+Send a signal
+\fIsignal\fR
+to all processes of the application after checkpointing the running application and before unfreezing the application\&. The signal will be handled by each process as soon as the process is woken up\&. By default, it sends the SIGTERM signal\&.
+\fIsignal\fR
+must be given as a numerical value\&. The list of signal numbers can be retrieved with
+\fBkill \-L\fR\&.
+.RE
+.PP
+\fB\-d \fR\fB\fIdescription\fR\fR, \fB\-\-description=\fR\fB\fIdescription\fR\fR
+.RS 4
+Associate a description
+\fIdescription\fR
+with the checkpoint\&. The description is recorded in
+description\&.txt
+in the checkpoint folder (see FILES below)\&.
+.sp
+This option makes sense only when really checkpointing the application\&.
+.RE
+.PP
+Options
+\fB\-f\fR,
+\fB\-c\fR,
+\fB\-u\fR,
+\fB\-k\fR
+are mutually exclusive\&.
+.SH "SUPPORTED APPLICATIONS AND LIMITATIONS"
+.PP
+Multi\-process applications and multithreaded programs are supported\&. To be able to restart the application, all process identifiers (including process group and session identifier) used by the application must be unused\&.
+.PP
+Checkpointing applications with zombie processes is not supported\&.
+.PP
+Checkpointing of applications using sockets or pipes is not supported\&. Therefore, graphic applications are not supported since there are using sockets to communicate with the X server\&.
+.PP
+IPC objects are not restored but it is possible to checkpoint an application that is currently waiting on such IPC objects\&. For instance, you can checkpoint a process waiting to receive a message from a message queue\&. The process will replay the action after the restart if the IPC objects still exits\&.
+.PP
+Files are not checkpointed nor restored\&. The files are reopened at restart time and file pointers are restored\&. That means that files must be in consistent states at restart time\&. Else, you can expect a strange behavior from your application\&. You can take advantage of the freeze option before the checkpoint to manually backup the files\&.
+.PP
+To restart your application, you must run exactly the same kernel as before the checkpoint\&. Thus, you can not expect to checkpoint an application before upgrading your kernel and restart once the upgrade is done\&.
+.SH "FILES"
+.PP
+.PP
+/var/chkpt
+.RS 4
+This directory is default location for disk checkpoints\&.
+.RE
+.PP
+/var/chkpt/<appid>/v<version>/
+.RS 4
+This directory contains the
+\fIn\fRth checkpoint (with
+\fIn\fR
+equals to
+\fIversion\fR) of application identified by
+\fIappid\fR\&.
+.sp
+To remove a checkpoint from disk, remove this folder\&.
+.RE
+.SH "AUTHORS"
+.PP
+Matthieu Fertré
+matthieu\&.fertre@kerlabs\&.com, Renaud Lottiaux
+renaud\&.lottiaux@kerlabs\&.com
+.SH "SEE ALSO"
+.PP
+
+\m[blue]\fB\fBrestart\fR(1)\fR\m[],
+\m[blue]\fB\fBkrgcr\-run\fR(1)\fR\m[],
+\m[blue]\fB\fBkrgcapset\fR(1)\fR\m[],
+\m[blue]\fB\fBkerrighed_capabilities\fR(7)\fR\m[],
