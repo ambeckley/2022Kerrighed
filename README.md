@@ -48,9 +48,9 @@ Once that is fixed you should be able to run "apt-get update" or "aptitude updat
  
  ---Run some Commands---
  
- cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot
- mkdir /var/lib/tftpboot/pxelinux.cfg
- cp /boot/vmlinuz-<KERNEL_VERSION> /boot/initrd.img-<KERNEL_VERSION> /var/lib/tftpboot/
+ 1. cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot
+ 2. mkdir /var/lib/tftpboot/pxelinux.cfg
+ 3. cp /boot/vmlinuz-<KERNEL_VERSION> /boot/initrd.img-<KERNEL_VERSION> /var/lib/tftpboot/
  
  
  
