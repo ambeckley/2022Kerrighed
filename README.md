@@ -45,9 +45,31 @@ Once that is fixed you should be able to run "apt-get update" or "aptitude updat
 
  aptitude install dhcp3-server tftpd-hpa syslinux nfs-kernel-server nfs-common debootstrap
  
+ 
+ ---Run some Commands---
+ 
+ cp /usr/lib/syslinux/pxelinux.0 /var/lib/tftpboot
+ mkdir /var/lib/tftpboot/pxelinux.cfg
+ cp /boot/vmlinuz-<KERNEL_VERSION> /boot/initrd.img-<KERNEL_VERSION> /var/lib/tftpboot/
+ 
+ 
+ 
+ 
 --Configure Services---
 
+copies of the files that need to be edited are included in this repo
+edit them when appropriate because they may not work for all builds
 
+Edit the files: 
+
+/etc/default/dhcp3-server
+/etc/dhcp3/dhcpd.conf
+/etc/default/tftp-hpa
+/etc/exports
+/var/lib/tftpboot/pxelinux.cfg/default
+
+
+---Configure Chroot----
 
 
 
