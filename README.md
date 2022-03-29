@@ -64,9 +64,9 @@ Edit the files:
 
 1. /etc/default/dhcp3-server
 2. /etc/dhcp3/dhcpd.conf
-/etc/default/tftp-hpa
- /etc/exports
- /var/lib/tftpboot/pxelinux.cfg/default
+3. /etc/default/tftp-hpa
+4. /etc/exports
+5. /var/lib/tftpboot/pxelinux.cfg/default
 
 
 ---Configure Chroot----
