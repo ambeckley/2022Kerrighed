@@ -1,8 +1,18 @@
 # 2022Kerrighed
 Kerrrighed installation and setup guide in 2022
 
+----Notes---- 
 
-You will need:
+I do not know if anyone would want to use Kerrighed in 2022, but if you went down the same rabbit hole I did then this guide will help you. 
+I have found
+
+I have found that kerrighed will sometimes not run on virtualbox when I/O apci is enabled in virtualbox on AMD processors. It will compile, but it will give a CPU timeout error when booting.  
+
+
+
+
+
+----You will need----
 
 Copy of linux kernel 2.6.20: https://mirrors.edge.kernel.org/pub/linux/kernel/v2.6/linux-2.6.20.tar.bz2
 
@@ -32,6 +42,21 @@ A copy of the updated sources.list file can be found here, but if you want to do
 Once that is fixed you should be able to run "apt-get update" or "aptitude update"
 
 ---Install Required Tools---
+
+# aptitude install dhcp3-server
+
+# aptitude install tftpd-hpa
+
+# aptitude install syslinux
+
+# apt-get install nfs-kernel-server nfs-common
+
+
+
+
+
+
+
 
 
 
