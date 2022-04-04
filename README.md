@@ -10,6 +10,8 @@ I have found that kerrighed will sometimes not run on virtualbox when I/O apci i
 
 Helpful links:
 
+https://wiki.ubuntu.com/EasyUbuntuClustering/UbuntuKerrighedClusterGuide
+
 
 
 
