@@ -1,0 +1,3 @@
+# /etc/default/kerrighed #
+# If true, enable Kerrighed module loading
+ENABLE=true
