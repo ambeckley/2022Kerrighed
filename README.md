@@ -74,7 +74,18 @@ Edit the files:
 
 
 
+1. debootstrap --arch amd64 hardy /nfsroot/kerrighed http://old-releases.ubuntu.com/ubuntu/
+2. chroot /nfsroot/kerrighed
+3. passwd
+4. mount -t proc none /proc
 
+now edit the sources.list to be like the one on the host. 
+
+5. aptitude update
+6. apt-get install dhcp3-common nfs-common nfsbooted openssh-server
+
+
+edit the fstab file copy in "chroot config files"
 
 
 
