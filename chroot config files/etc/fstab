@@ -1,0 +1,6 @@
+# /etc/fstab
+#
+# <file system> <mount point> <type> <options> <dump> <pass>
+proc            /proc         proc   defaults       0      0
+/dev/nfs        /             nfs    defaults       0      0
+configfs        /config         configfs        defaults        0 0

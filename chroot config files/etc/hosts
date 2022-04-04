@@ -1,0 +1,10 @@
+# /etc/hosts #
+127.0.0.1 localhost
+
+192.168.1.1    kerrighedserver
+192.168.1.101  kerrighednode1
+192.168.1.102  kerrighednode2
+192.168.1.103  kerrighednode3
+192.168.1.104  kerrighednode4
+192.168.1.105  kerrighednode5
+192.168.1.106  kerrighednode6
