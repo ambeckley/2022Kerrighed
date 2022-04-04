@@ -1,0 +1,2 @@
+session=1  #Value can be 1 - 254 
+nbmin=6    #Number of nodes which load before kerrighed autostarts.
