@@ -8,6 +8,8 @@ I do not know if anyone would want to use Kerrighed in 2022, but if you went dow
 
 I have found that kerrighed will sometimes not run on virtualbox when I/O apci is enabled in virtualbox on AMD processors. It will compile, but it will kernel panic when booting.
 
+Helpful links:
+
 
 
 
