@@ -88,7 +88,7 @@ now edit the sources.list to be like the one on the host.
 edit the files in "chroot config files"
 
 7. ln -sf /etc/network/if-up.d/mountnfs /etc/rcS.d/S34mountnfs 
-8. adduser <username>
+8. adduser "username"
 9. exit
  
 
