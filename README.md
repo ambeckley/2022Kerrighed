@@ -91,6 +91,13 @@ edit the files in "chroot config files"
 8. adduser "username"
 9. exit
  
+----Setup Kerrighed----
+
+
+1. apt-get install automake autoconf libtool pkg-config gawk rsync bzip2 gcc-3.3 libncurses5 libncurses5-dev wget lsb-release xmlto patchutils xutils-dev build-essential openssh-server ntp
+2. copy kernel and kerrighed source into /usr/src
+3. 
+
 
 
 
