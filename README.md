@@ -11,7 +11,6 @@ I have found that kerrighed will sometimes not run on virtualbox when I/O apci i
 
 
 
-
 ----You will need----
 
 Copy of linux kernel 2.6.20: https://mirrors.edge.kernel.org/pub/linux/kernel/v2.6/linux-2.6.20.tar.bz2
@@ -96,7 +95,23 @@ edit the files in "chroot config files"
 
 1. apt-get install automake autoconf libtool pkg-config gawk rsync bzip2 gcc-3.3 libncurses5 libncurses5-dev wget lsb-release xmlto patchutils xutils-dev build-essential openssh-server ntp
 2. copy kernel and kerrighed source into /usr/src
-3. 
+3.  cd /usr/src
+4.  tar zxf kerrighed-2.4.1.tar.gz
+5.  tar jxf linux-2.6.20.tar.bz2
+
+6. cd /usr/src/kerrighed-VERSION/modules
+7. ./configure --with-kernel=/usr/src/linux-2.6.20 CC=gcc-3.3
+8. cd kernel
+9. make defconfig
+10. make menuconfig
+11. make kernel
+12.  make
+13.  make kernel-install
+14.  make install
+15.  ldconfig
+16.  mkdir /config
+
+
 
 
 
