@@ -92,7 +92,6 @@ edit the files in "chroot config files"
 
 7. ln -sf /etc/network/if-up.d/mountnfs /etc/rcS.d/S34mountnfs 
 8. adduser "username"
-9. exit
  
 ----Setup Kerrighed----
 
@@ -114,11 +113,24 @@ edit the files in "chroot config files"
 14.  make install
 15.  ldconfig
 16.  mkdir /config
+17. cp /nfsroot/kerrighed/boot/vmlinuz-2.6.20-krg /var/lib/tftpboot/
+18. exit
+19. reboot
 
 
 
 
 
+----Testing setup----
+
+Everything should work now
+
+
+commands that should work
+
+1.krgadm cluster start
+2. krgadm cluster status
+3. free -m should show combined ram
 
 
 
