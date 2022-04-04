@@ -1,0 +1,4 @@
+# /etc/default/tftp-hpa #
+#Defaults for tftp-hpa
+RUN_DAEMON="NO"
+OPTIONS="-l -s /var/lib/tftpboot"

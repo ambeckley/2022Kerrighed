@@ -1,0 +1,53 @@
+# /etc/dhcp3/dhcpd.conf #
+# General options
+option dhcp-max-message-size 2048;
+use-host-decl-names on;
+deny unknown-clients; # This will stop any non-node machines from appearing on the cluster network.
+deny bootp;
+
+# DNS settings
+option domain-name "kerrighed";          # Just an example name - call it whatever you want.
+option domain-name-servers 192.168.1.1;  # The server's IP address, manually configured earlier.
+
+# Information about the network setup
+subnet 192.168.1.0 netmask 255.255.255.0 {
+  option routers 192.168.1.1;              # Server IP as above.
+  option broadcast-address 192.168.1.255;  # Broadcast address for your network.
+}
+
+# Declaring IP addresses for nodes and PXE info
+group {
+  filename "pxelinux.0";                 # PXE bootloader. Path is relative to /var/lib/tftpboot
+  option root-path "192.168.1.1:/nfsroot/kerrighed";  # Location of the bootable filesystem on NFS server
+
+  host kerrighednode1 {
+        fixed-address 192.168.1.101;          # IP address for the first node, kerrighednode1 for example.
+        hardware ethernet 01:2D:61:C7:17:86;  # MAC address of the node's ethernet adapter
+  }
+
+  host kerrighednode2 {
+        fixed-address 192.168.1.102;
+        hardware ethernet 01:2D:61:C7:17:87;
+  }
+
+  host kerrighednode3 {
+        fixed-address 192.168.1.103;
+        hardware ethernet 01:2D:61:C7:17:88;
+  }
+  host kerrighednode4 {
+        fixed-address 192.168.1.104;
+        hardware ethernet 01:2D:61:C7:17:89;
+  }
+  host kerrighednode5 {
+        fixed-address 192.168.1.105;
+        hardware ethernet 01:2D:61:C7:17:90;
+  }
+  host kerrighednode6 {
+        fixed-address 192.168.1.106;
+        hardware ethernet 01:2D:61:C7:17:91;
+  }
+
+
+  server-name "kerrighedserver"; # Name of the server. Call it whatever you like.
+  next-server 192.168.1.1;       # Server IP, as above.
+}
