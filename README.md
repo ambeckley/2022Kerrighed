@@ -85,9 +85,12 @@ now edit the sources.list to be like the one on the host.
 6. apt-get install dhcp3-common nfs-common nfsbooted openssh-server
 
 
-edit the fstab file copy in "chroot config files"
+edit the files in "chroot config files"
 
-
+7. ln -sf /etc/network/if-up.d/mountnfs /etc/rcS.d/S34mountnfs 
+8. adduser <username>
+9. exit
+ 
 
 
 
