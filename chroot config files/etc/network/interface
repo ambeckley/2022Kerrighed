@@ -1,0 +1,7 @@
+# ...
+# The loopback interface:
+auto lo
+iface lo inet loopback
+
+# The primary network interface, manually configured to protect NFS:
+iface eth0 inet manual
