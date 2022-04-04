@@ -57,7 +57,7 @@ Once that is fixed you should be able to run "apt-get update" or "aptitude updat
  
 --Configure Services---
 
-copies of the files that need to be edited are included in this repo
+copies of the files that need to be edited are included in this repo under "config files"
 edit them when appropriate because they may not work for all builds
 
 Edit the files: 
@@ -67,6 +67,7 @@ Edit the files:
 3. /etc/default/tftp-hpa
 4. /etc/exports
 5. /var/lib/tftpboot/pxelinux.cfg/default
+
 
 
 ---Configure Chroot----
